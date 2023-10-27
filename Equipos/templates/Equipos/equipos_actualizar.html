@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="row my-4 p-2">
+    <div class="card-body flex-column d-flex justify-content-center align-items-center">
+    <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+        {{form.as_p}}
+        <input class="btn btn-success" type="submit" value="Enviar">
+        <a class="btn btn-outline-secondary" href="{% url 'DetalleEquipo' equipos.id %}">Regresar</a>
+    </form>
+</div>
+</div>
+
+{% endblock %}

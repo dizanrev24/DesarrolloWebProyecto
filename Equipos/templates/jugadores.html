@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="col text-center">
+    <h3>Buscar un jugador:</h3>
+
+    <form action="buscarJugador/" method="GET">
+
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre del Jugador">
+
+        <input type="submit" value="Buscar" class="btn btn-primary">
+
+    </form>
+</div>
+<br>
+
+<div class="row my-4 text-center d-flex flex-row justify-content-center">
+    {% for jugador in object_list %}
+
+    <div class="card m-2" style="width: 20rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ jugador.nombre }} {{ jugador.apellido }}</h5>
+            <p class="card-text">{{ jugador.equipo }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ jugador.posicion }}</li>
+            <li class="list-group-item">Dorsal: {{ jugador.dorsal }} </li>
+        </ul>
+        <div class="card-body">
+            <a class="m-2 btn btn-outline-info" href="{% url 'EditarJugador' jugador.id %}">Editar</a>
+            <a class="m-2 btn btn-outline-danger" href="{% url 'EliminarJugador' jugador.id %}">Borrar</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="d-flex flex-row justify-content-center">
+    <a class="m-3 btn btn-primary" href="{% url 'NuevoJugador' %}">Agregar otro Jugador</a>
+</div>
+
+{% endblock %}

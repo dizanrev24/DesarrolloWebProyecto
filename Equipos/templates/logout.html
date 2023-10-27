@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card m-auto" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title text-center">Cerraste sesion</h5>
+        <p class="card-text">
+            Sesion cerrada correctamente.
+        </p>
+        <div class="d-flex flex-row justify-content-center">
+            <a href="{% url 'Login' %}" class="btn btn-primary">Iniciar sesion nuevamente</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+<style>
+    .container {
+        text-align: center;
+        margin-right: 20px;
+      }
+
+    .center{
+        text-align: right;
+    }
+</style>
+
+{% block content %}
+
+
+
+<div class="container">
+
+    <div class="center">
+        <h2>Editar Partido</h2>
+    <div/>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="{% url 'tabla_partidos' torneo_id=partido.torneo.id %}" class="btn btn-secondary">Volver a la lista de partidos</a>
+    </form>
+<div/>
+
+    
+</div>
+{% endblock %}

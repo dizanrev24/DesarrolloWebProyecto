@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="col-md-4 p-4 m-auto">
+    <div class="card bg-black card-project">
+        <div class="card-body flex-column d-flex justify-content-center align-items-center">
+
+            <h2 class="text-red-800"><i>{{ equipos.nombre }}</i></h2>
+            {% if equipos.escudo %}
+            <img src="{{ equipos.escudo.url }}" alt="" class="img-fluid">
+            {% endif %}
+
+            <p>Abreviatura: <i>{{ equipos.abreviatura }}</i></p>
+            <p>DT: <i>{{ equipos.nombre_DT }}</i></p>
+            <p>Cantidad de jugadores: <i>{{ equipos.cant_jugadores }}</i></p>
+            <p>Torneo: <i>{{ equipos.torneo_equipo }}</i></p>
+            <div class="d-flex flex-row justify-content-center">
+                <a class="m-3 btn btn-outline-info" href="{% url 'EditarEquipo' equipos.id %}">Editar</a>
+                <a class="m-3 btn btn-outline-danger" href="{% url 'EliminarEquipo' equipos.id %}">Borrar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col text-center">
+    <a class="m-auto btn btn-primary my-2" href="{% url 'Equipos' %}">Regresar</a>
+</div>
+
+
+
+{% endblock %}

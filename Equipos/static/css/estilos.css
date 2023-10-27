@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: rgba(110, 152, 245, 0.801);
+}
+
+.fondo{
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://img.freepik.com/vector-premium/ingeniero-construccion-dibujos-animados_18591-36872.jpg");
+}
+

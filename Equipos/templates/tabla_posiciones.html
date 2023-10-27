@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="d-flex justify-content-between">
+        <h2>Tabla de Posiciones</h2>
+        <a href="{% url 'crear_tabla_posiciones' torneo_id %}" class="btn btn-primary">Crear Tabla de Posiciones</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>Puntos</th>
+                <th>Partidos Jugados</th>
+                <!-- Agrega más columnas según tus necesidades -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for posicion in posiciones %}
+                <tr>
+                    <td>{{ posicion.equipo.nombre }}</td>
+                    <td>{{ posicion.puntos }}</td>
+                    <td>{{ posicion.partidos_jugados }}</td>
+                    <!-- Agrega más datos según tu modelo de TablaPosiciones -->
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No hay datos de tabla de posiciones disponibles.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

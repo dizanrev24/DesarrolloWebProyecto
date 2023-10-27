@@ -1,0 +1,91 @@
+{% load tailwind_tags %}
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    {% load static %}
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{% static './icono_pag.ico' %}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    {% tailwind_css %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <title>Torneos FEZ</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark fixed-top" style="background-color: #0f0e17;">
+        <div class="container" style="justify-content: space-between;">
+            <a class="navbar-brand" href="{% url 'Inicio' %}">Inicio</a>
+            <a class="navbar-brand" href="{% url 'Equipos' %}">Equipos</a>
+            <a class="navbar-brand" href="{% url 'Jugadores' %}">Jugadores</a>
+            <a class="navbar-brand" href="{% url 'Torneos' %}">Torneos</a>
+            
+            
+            <div class="d-flex flex-row justify-content-center align-items-center align-self-end">
+                {% if user.is_authenticated %}
+                <img src="{{avatar}}" alt="">
+                <p class="text-muted small mb-4 mb-lg-0">Hola, {{user.username}}</p>
+                <a class="btn btn-sm btn-secondary m-1" href="{% url 'EditarPerfil' %}">Editar Perfil</a>
+                <a class="btn btn-sm btn-secondary m-1" href="{% url 'Logout' %}">Cerrar Sesion</a>
+                {% else %}
+                <a class="btn btn-sm btn-secondary m-1" href="{% url 'Login' %}">Iniciar Sesion</a>s
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <header class="h-64 d-flex justify-content-center align-items-center ">
+        <div class=" mt-32 text-center">
+            <h1 class="mb-5 text-black-900">TORNEOS FUTBOL ESTANZUELA ZACAPA</h1>
+        </div>
+    </header>
+    {% if messages %}
+    <div class="alert alert-dismissible" role="alert">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+
+    {% block content %}
+
+    {% endblock %}
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+    <!-- A plugin for password show/hide  -->
+    <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+</body>
+
+</html>

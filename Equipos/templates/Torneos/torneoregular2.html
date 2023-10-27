@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<p class="mb-3 font-bold font fs-2 text-center">Torneo Regular 2</p>
+<p class="mb-3 font-bold font fs-3 text-center">Torneo regular conformado por 10 equipos de Estanzuela, Zacapa</p>
+
+<div class="container d-flex justify-content-around flex-wrap">
+    {% for equipo in equipos %}
+    <section class="mx-3 my-3">
+
+        <div class="card" style="max-width: 23rem;">
+            <div class="card-body d-flex flex-row justify-content-center">
+                <h5 class="card-title font-weight-bold mb-2">{{equipo.nombre}}</h5>
+            </div>
+            <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+                {% if equipo.escudo %}
+                <div class="object-contain ">
+                    <img src="{{equipo.escudo.url}}" alt="" class="img-fluid">
+                </div>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <a class="m-3 btn btn-secondary" href="{% url 'DetalleEquipo' equipo.id %}">Ver detalle</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+    <div class="col text-center">
+        <a class="m-auto btn btn-primary my-2" href="{% url 'Torneos' %}">Regresar</a>
+        <a class="m-3 btn btn-primary" href="{% url 'NuevoEquipo' %}">Agregar otro Equipo</a>
+        <a href="{% url 'tabla_partidos' torneo_id=torneo.id %}" class="btn btn-primary">Ver Listado de Partidos</a>
+
+    </div>
+
+{% endblock %}

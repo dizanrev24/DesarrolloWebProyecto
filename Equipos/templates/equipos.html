@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="col text-center">
+<h3>Busca tu equipo:</h3>
+
+<form action="buscarEquipo/" method="GET">
+
+    <input type="text" name="nombre" id="nombre" placeholder="Nombre del Equipo">
+
+    <input type="submit" value="Buscar" class="btn btn-primary">
+
+</form>
+</div>
+
+{% if object_list %}
+<div class="row my-4 text-center">
+    {% for equipo in object_list %}
+
+    <div class="col-md-4 p-4">
+        <div class="card bg-white card-project">
+            <div class="card-body">
+                <h2 class="text-black-900">{{equipo.nombre}}</h2>
+                <p >DT: {{equipo.nombre_DT}}</p>
+                {% if equipo.escudo %}
+                <div class="object-contain ">
+                <img src="{{equipo.escudo.url}}" alt="" class="mx-auto img-fluid">
+            </div>
+                {% endif %}
+                <a class="m-3 btn btn-secondary" href="{% url 'DetalleEquipo' equipo.id %}">Ver detalle</a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+
+<div class="d-flex flex-row justify-content-center">
+    <a class="m-3 btn btn-primary" href="{% url 'NuevoEquipo' %}">Agregar otro Equipo</a>
+</div>
+
+{% endif %}
+{% endblock %}

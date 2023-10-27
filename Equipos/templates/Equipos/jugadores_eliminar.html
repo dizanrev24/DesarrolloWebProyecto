@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <form method="post">{% csrf_token %}
+            <p class="font-weight-bold">¿Estás seguro que deseas borrar el jugador "{{ jugadores.nombre }} {{jugadores.apellido}}"?</p>
+            <div class="d-flex flex-row justify-content-center">
+                <input class="m-3 btn btn-danger" type="submit" value="Eliminar" />
+                <a class="m-3 btn btn-secondary" href="{% url 'Jugadores' %}">Regresar</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

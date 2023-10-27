@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Crear Tabla de Posiciones</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    
+    <a href="{% url 'tabla_posiciones' %}" class="btn btn-secondary">Volver a la Tabla de Posiciones</a>
+
+</div>
+{% endblock %}

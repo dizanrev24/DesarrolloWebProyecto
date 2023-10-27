@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="col text-center">
+    <h5>Resultado de la busqueda de: "{{nombre}}"</h5>
+</div>
+{% if equipos %}
+<div class="row my-4 text-center d-flex flex-row justify-content-center">
+{% for equipo in equipos  %}
+
+<div class="col-md-4 p-4">
+    <div class="card bg-black card-project">
+        <div class="card-body">
+            <h2>{{equipo.nombre}}</h2>
+            <p>DT: {{equipo.nombre_DT}}</p>
+            {% if equipo.escudo %}
+            <img src="{{equipo.escudo.url}}" alt="" class="img-fluid">
+            {% endif %}
+            <p> 
+                <a class="btn btn-secondary" href="{% url 'DetalleEquipo' equipo.id %}">Ver detalle</a> 
+            
+            </p> 
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+</div>
+<br>
+{% endif %}
+<div class="d-flex flex-row justify-content-center">
+<a class="m-3 btn btn-outline-primary" href="{% url 'Equipos' %}">Regresar</a>
+</div>
+{% endblock %}
